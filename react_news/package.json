@@ -12,6 +12,7 @@
     "babelify": "^8.0.0",
     "css-loader": "^0.28.8",
     "fetch": "^1.1.0",
+    "newsapi": "^2.1.0",
     "react": "^16.2.0",
     "react-dom": "^16.2.0",
     "react-mixin": "^2.0.2",

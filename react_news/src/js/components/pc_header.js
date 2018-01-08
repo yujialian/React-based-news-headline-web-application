@@ -4,7 +4,7 @@ import {
   Menu,
   Icon,
   Tabs,
-  Message,
+  message,
   Form,
   Input,
   Button,
@@ -48,6 +48,13 @@ class PCHeader extends React.Component {
     };
     var formData=this.props.form.getFieldsValue();
     console.log(formData);
+    fetch("http://newsapi.gugujiankong.com/Handler.ashx?action=register&username=userName&password=password&r_userName="+formData.r_userName+"&r_password="+formData.r_password+"&r_confirmPassword="+formData.r_confirmPassword,myFetchOptions)
+    .then(response=>response.json())
+    .then(json=>{
+      this.setState({userNickName:json.NickUserName, userId:json.UserId});
+    });
+    message.success("You request is been processed!");
+    this.setModalVisible(false);
   }
   render() {
     let {getFieldProps} = this.props.form;
@@ -103,7 +110,7 @@ class PCHeader extends React.Component {
           <Modal title="User Center" wrapClassName="vertical-center-modal" visible={this.state.modalVisible} onCancel={() => this.setModalVisible(false)} onOk={() => this.setModalVisible(false)} okText = "Close">
             <Tabs type="card">
               <TabPane tab="Register" key="2">
-                <Form horizontal onSubmit={this.handleSubmit.bind(this)}>
+                <Form horizontal="true" onSubmit={this.handleSubmit.bind(this)}>
                   <FormItem label="Account">
                     <Input placeholder="Please input your account." {...getFieldProps('r_userName')}/>
                   </FormItem>
