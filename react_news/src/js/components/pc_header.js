@@ -15,7 +15,7 @@ const FormItem = Form.Item;
 const SubMenu = Menu.SubMenu;
 const TabPane = Tabs.TabPane;
 const MenuItemGroup = Menu.ItemGroup;
-import {Link} from 'react-router-dom';
+import {Link,Router,Route,browserHistory} from 'react-router-dom';
 class PCHeader extends React.Component {
   constructor() {
     super();
