@@ -15,7 +15,7 @@ const FormItem = Form.Item;
 const SubMenu = Menu.SubMenu;
 const TabPane = Tabs.TabPane;
 const MenuItemGroup = Menu.ItemGroup;
-import {Link} from 'react-router';
+import {Link} from 'react-router-dom';
 class PCHeader extends React.Component {
   constructor() {
     super();
@@ -26,6 +26,13 @@ class PCHeader extends React.Component {
       hasLogined: false,
       userNickName: '',
       userId: 0
+    };
+  };
+
+  componentWillMount() {
+    if(localStorage.userid!='') {
+      this.setState({hasLogined:true});
+      this.setState({userNickName:localStorage.userNickName,userId:localStorage.userid})
     }
   }
   setModalVisible(value) {
@@ -33,7 +40,7 @@ class PCHeader extends React.Component {
   };
 
   handleClick(e) {
-    if (e.key = "register") {
+    if (e.key == "register") {
       this.setState({current: 'register'});
       this.setModalVisible(true);
     } else {
@@ -46,34 +53,55 @@ class PCHeader extends React.Component {
     var myFetchOptions = {
       method: 'GET'
     };
-    var formData=this.props.form.getFieldsValue();
+    var formData = this.props.form.getFieldsValue();
     console.log(formData);
-    fetch("http://newsapi.gugujiankong.com/Handler.ashx?action=register&username=userName&password=password&r_userName="+formData.r_userName+"&r_password="+formData.r_password+"&r_confirmPassword="+formData.r_confirmPassword,myFetchOptions)
-    .then(response=>response.json())
-    .then(json=>{
-      this.setState({userNickName:json.NickUserName, userId:json.UserId});
+    fetch("http://newsapi.gugujiankong.com/Handler.ashx?action=" + this.state.action
+     + "&username="+formData.userName+"&password="+formData.password
+     +"&r_userName=" + formData.r_userName + "&r_password=" + formData.r_password
+     + "&r_confirmPassword=" + formData.r_confirmPassword, myFetchOptions)
+     .then(response => response.json()).then(json => {
+      this.setState({userNickName: json.NickUserName, userId: json.UserId});
+      localStorage.userid = json.UserId;
+      localStorage.userNickName = json.NickUserName;
     });
+
+    if(this.state.action=="login") {
+      this.setState({hasLogined:true});
+    }
     message.success("You request is been processed!");
     this.setModalVisible(false);
   }
+  callback(key) {
+    if (key == 1) {
+      this.setState({action: 'login'});
+    } else if (key == 2) {
+      this.setState({action: 'register'});
+    }
+  };
+  logout() {
+    localStorage.userid = '';
+    localStorage.userNickName = '';
+    this.setState({hasLogined:false});
+  };
   render() {
     let {getFieldProps} = this.props.form;
-
     {/* Define User info and login logout */}
     const userShow = this.state.hasLogined
       ? <Menu.Item key="logout" class="register">
           <Button type="primary" htmltype="button">{this.state.userNickName}</Button>
           &nbsp;&nbsp;
-          <Link target="_blank">
+
+          <Link target="_blank" to={`/`}>
             <Button type="dashed" htmlType="button">Profile</Button>
           </Link>
+
           &nbsp;&nbsp;
-          <Button type="ghost" htmlType="button">Logout</Button>
+          <Button type="ghost" htmlType="button" onClick={this.logout.bind(this)}>Logout</Button>
         </Menu.Item>
       : <Menu.Item key="register" class="register">
         <Icon type="appstore"/>Register/Login
       </Menu.Item>;
-    {/*End of user info defination.*/}
+    {/* End of user info defination. */}
 
     return (<header>
       <Row>
@@ -101,14 +129,27 @@ class PCHeader extends React.Component {
             <Menu.Item key="business">
               <Icon type="appstore"/>Business
             </Menu.Item>
-            <Menu.Item key="science">
-              <Icon type="appstore"/>Science
-            </Menu.Item>
+
             {userShow}
           </Menu>
-{/* Register pop-box.*/}
-          <Modal title="User Center" wrapClassName="vertical-center-modal" visible={this.state.modalVisible} onCancel={() => this.setModalVisible(false)} onOk={() => this.setModalVisible(false)} okText = "Close">
-            <Tabs type="card">
+          {/* Register pop-box. */}
+          <Modal title="User Center" wrapClassName="vertical-center-modal" visible={this.state.modalVisible} onCancel={() => this.setModalVisible(false)} onOk={() => this.setModalVisible(false)} okText="Close">
+            <Tabs type="card" onChange={this.callback.bind(this)}>
+              {/*Login tab*/}
+              <TabPane tab="Login" key="1">
+                <Form horizontal="true" onSubmit={this.handleSubmit.bind(this)}>
+                  <FormItem label="Account">
+                    <Input placeholder="Please input your account." {...getFieldProps('userName')}/>
+                  </FormItem>
+                  <FormItem label="Password">
+                    <Input type="password" placeholder="Please input setup password." {...getFieldProps('password')}/>
+                  </FormItem>
+                  <Button type="primary" htmlType="submit">Login</Button>
+                </Form>
+              </TabPane>
+              {/*End of login tab*/}
+
+              {/*Register tab*/}
               <TabPane tab="Register" key="2">
                 <Form horizontal="true" onSubmit={this.handleSubmit.bind(this)}>
                   <FormItem label="Account">
@@ -123,14 +164,14 @@ class PCHeader extends React.Component {
                   <Button type="primary" htmlType="submit">Register</Button>
                 </Form>
               </TabPane>
+              {/*End of Register tab*/}
             </Tabs>
           </Modal>
-{/*End of register pop-box.*/}
+          {/* End of register pop-box. */}
         </Col>
         <Col span={2}></Col>
       </Row>
-    </header>
-  );
+    </header>);
   };
 }
 export default PCHeader = Form.create({})(PCHeader);
