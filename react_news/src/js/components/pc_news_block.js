@@ -8,7 +8,7 @@ export default class PCNewsBlock extends React.Component {
     this.state = {
       news: ''
     };
-  }
+  };
   componentWillMount() {
     var myFetchOptions = {
       method: 'GET'
