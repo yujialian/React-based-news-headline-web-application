@@ -1,7 +1,7 @@
 import React from 'react';
 import {Row, Col, Card} from 'antd';
-import PCHeader from './pc_header';
-import PCFooter from './pc_footer';
+import MobileHeader from './mobile_header';
+import MobileFooter from './mobile_footer';
 import {
   Menu,
   Icon,
@@ -19,24 +19,21 @@ const SubMenu = Menu.SubMenu;
 const TabPane = Tabs.TabPane;
 const MenuItemGroup = Menu.ItemGroup;
 import {Link, Router, Route, browserHistory} from 'react-router-dom';
-export default class PCUserCenter extends React.Component {
+export default class MobileUserCenter extends React.Component {
   render() {
     return (<div>
-      <PCHeader/>
+      <MobileHeader/>
       <Row>
-        <Col span={2}></Col>
-        {/* Total 24 columns layout. */}
-        <Col span={20}>
+        <Col span={24}>
           <Tabs>
             <TabPane tab="My collections" key="1"></TabPane>
             <TabPane tab="My Comments" key="2"></TabPane>
             <TabPane tab="Headshot Setting" key="3"></TabPane>
           </Tabs>
         </Col>
-        <Col span={2}></Col>
       </Row>
 
-      <PCFooter/>
+      <MobileFooter/>
     </div>);
   }
 }
