@@ -26,13 +26,15 @@ export default class MobileNewsDetails extends React.Component {
     return (<div id="mobileDetailsContainer">
       <MobileHeader></MobileHeader>
       <div class="ucmobileList">
-      <Row>
-        <Col span={24} className="container">
-          <div class="articleContainer" dangerouslySetInnerHTML={this.createMarkup()}></div>
-        </Col>
-      </Row>
-      <MobileFooter></MobileFooter>
-      <BackTop/></div>
+        <Row>
+          <Col span={24} className="container">
+            <div class="articleContainer" dangerouslySetInnerHTML={this.createMarkup()}></div>
+            <hr/>
+            <CommonComments uniquekey={this.props.match.params.uniquekey}/>
+          </Col>
+        </Row>
+        <MobileFooter></MobileFooter>
+        <BackTop/></div>
     </div>);
   }
 }

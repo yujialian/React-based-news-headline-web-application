@@ -10,7 +10,8 @@ import {
   Input,
   Button,
   CheckBox,
-  Modal
+  Modal,
+  notification
 } from 'antd';
 const FormItem = Form.Item;
 const SubMenu = Menu.SubMenu;
@@ -39,15 +40,27 @@ class CommonComments extends React.Component {
       method: 'GET'
     };
     var formdata = this.props.form.getFieldsValue();
-    fetch("http://newsapi.gugujiankong.com/Handler.ashx?action=comment&userid=" + localStorage.userid + "&uniquekey=" + this.props.uniquekey + "&commnet=" + formdata.remark, myFetchOptions).then(response => response.json()).then(json => {
+    fetch("http://newsapi.gugujiankong.com/Handler.ashx?action=comment&userid=" + localStorage.userid + "&uniquekey=" + this.props.uniquekey + "&commnet=" + formdata.remark, myFetchOptions)
+    .then(response => response.json()).then(json => {
       this.componentDidMount();
+    })
+  };
+  addUserCollection() {
+    var myFetchOptions = {
+      method: 'GET'
+    };
+    fetch("http://newsapi.gugujiankong.com/Handler.ashx?action=uc&userid="+localStorage.userid+"&uniquekey="+this.props.uniquekey, myFetchOptions)
+    .then(response=>response.json())
+    .then(json=>{
+      //Give a global notation if collection is successfully processed.
+      notification['success']({message:'ReactNews Notice', description:'Collection successful!'})
     })
   };
   render() {
     let {getFieldProps} = this.props.form;
     const {comments} = this.state;
     const commentsList = comments.length
-      ? comments.map((comment, index) => (<Card key={index} title={comment.UserName} extra={<a href = "#" > Comment Time: {
+      ? comments.map((comment, index) => (<Card key={index} title={comment.UserName} extra={<a href="#">Comment Time: {
           comment.datetime
         }
         </a>}>
@@ -63,6 +76,8 @@ class CommonComments extends React.Component {
               <Input type="textarea" placeholder="Leave a comment!" {...getFieldProps('remark',{initialValue:''})}/>
             </FormItem>
             <Button type="primary" htmlType="submit">Submit</Button>
+            &nbsp;&nbsp;
+            <Button type="primary" htmlType="button" onClick={this.addUserCollection.bind(this)}>Collection</Button>
           </Form>
         </Col>
       </Row>
