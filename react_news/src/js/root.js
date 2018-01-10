@@ -3,6 +3,8 @@ import ReactDOM from 'react-dom';
 import {Route, BrowserRouter, Switch} from 'react-router-dom';
 import PCIndex from './components/pc_index';
 import PCNewsDetails from './components/pc_news_details';
+import MobileNewsDetails from './components/mobile_news_details';
+
 import MobileIndex from './components/mobile_index';
 import 'antd/dist/antd.css';
 import MediaQuery from 'react-responsive';
@@ -21,6 +23,7 @@ export default class Root extends React.Component {
         <BrowserRouter>
           <Switch>
             <Route exact path="/" component={MobileIndex}></Route>
+            <Route path="/details/:uniquekey" component={MobileNewsDetails}></Route>
           </Switch>
         </BrowserRouter>
       </MediaQuery>
