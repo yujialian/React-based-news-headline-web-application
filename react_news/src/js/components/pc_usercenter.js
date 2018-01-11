@@ -25,9 +25,19 @@ export default class PCUserCenter extends React.Component {
   constructor() {
     super();
     this.state = {
+      usercollection: '',
       previewImage:'',
       previewVisible: false
     }
+  };
+  componentDidMount() {
+    var myFetchOptions = {
+      method: 'GET'
+    };
+    fetch('http://newsapi.gugujiankong.com/Handler.ashx?action=getuc&userid=' + localStorage.userid, myFetchOptions).then(response => response.json()).then(json => {
+      this.setState({usercollection: json});
+    });
+    document.title = "Welcome! "+ localStorage.userNickName+" - React News | User center";
   };
   render() {
     const props = {
@@ -50,6 +60,17 @@ export default class PCUserCenter extends React.Component {
         this.setState({previewImage:file.url, previewVisible:true});
       }
     }
+
+    const {usercollection} = this.state; //same as:const usercollection=this.state.usercollection;
+    const usercollectionList = usercollection.length
+      ? usercollection.map((uc, index) => (<Card key={index} title={uc.uniquekey} extra={<a href = {
+          `/details/${uc.uniquekey}`
+        } > Details</a>}>
+        <p>{uc.Title}</p>
+      </Card>))
+      : 'No articles been collected, go get some good articles!'
+
+
     return (<div>
       <PCHeader/>
       <Row>
@@ -57,7 +78,15 @@ export default class PCUserCenter extends React.Component {
         {/* Total 24 columns layout. */}
         <Col span={20}>
           <Tabs>
-            <TabPane tab="My collections" key="1"></TabPane>
+            <TabPane tab="My collections" key="1">
+              <div class="comment">
+                <Row>
+                  <Col span={24}>
+                    {usercollectionList}
+                  </Col>
+                </Row>
+              </div>
+            </TabPane>
             <TabPane tab="My Comments" key="2"></TabPane>
             <TabPane tab="Headshot Setting" key="3">
               <div class="clearfix">
