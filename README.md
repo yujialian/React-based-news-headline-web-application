@@ -95,7 +95,7 @@ import MediaQuery from 'react-responsive';
 ```
 
 
-Overall tech stack  
+Overall tech stack:  
 
 ```
 UI Component ： Ant Design； flex layout  
