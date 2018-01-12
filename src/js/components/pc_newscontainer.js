@@ -33,10 +33,10 @@ export default class PCNewsContainer extends React.Component {
           </div>
           <Tabs class="tabs_news">
             <TabPane tab="News" key="1">
-              <PCNewsBlock count={22} type="top" width="100%" bordered="false"/>
+              <PCNewsBlock count={22} type="top" width="90%" bordered="false"/>
             </TabPane>
             <TabPane tab="World" key="2">
-              <PCNewsBlock count={22} type="guoji" width="100%" bordered="false"/>
+              <PCNewsBlock count={22} type="guoji" width="90%" bordered="false"/>
             </TabPane>
           </Tabs>
           <Tabs class="tabs_product">
@@ -45,8 +45,8 @@ export default class PCNewsContainer extends React.Component {
             </TabPane>
           </Tabs>
           <div>
-            <PCNewsImageBlock count={8} type="guonei" width="100%" cardTitle="US News" imageWidth="132px"/>
-            <PCNewsImageBlock count={16} type="yule" width="100%" cardTitle="Sports" imageWidth="132px"/>
+            <PCNewsImageBlock count={14} type="guonei" width="100%" cardTitle="US News" imageWidth="132px"/>
+            <PCNewsImageBlock count={21} type="yule" width="100%" cardTitle="Sports" imageWidth="132px"/>
           </div>
         </Col>
         <Col span={2}></Col>

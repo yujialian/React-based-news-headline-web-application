@@ -35,8 +35,8 @@ export default class PCNewsImageBlock extends React.Component {
             <img alt="" style={styleImage} src={newsItem.thumbnail_pic_s}/>
           </div>
           <div class="custom-card">
-            <h3   style={styleH3}>{newsItem.title}</h3>
-            <p   style={styleH3}>{newsItem.author_name}</p>
+            <h3 style={styleH3}>{newsItem.title}</h3>
+            <p style={styleH3}>{newsItem.author_name}</p>
           </div>
         </Link>
       </div>))
