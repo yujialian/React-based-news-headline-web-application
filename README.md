@@ -45,6 +45,7 @@ README.md  Help
 node_modules Module file
 package.json Module configuration
 webpack.config.js webpack configuration
+```
 
 First step：
 ```
@@ -58,7 +59,7 @@ Thrid step：
 ```
 webpack --watch
 Using Webpack's Hot Module Replacement with React： webpack-dev-server
-
+```
 
 ---------------some notes--------------------
 
