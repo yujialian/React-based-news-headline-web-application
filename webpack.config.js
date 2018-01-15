@@ -2,27 +2,27 @@ var debug = process.env.NODE_ENV !== "production";
 var webpack = require('webpack');
 var path = require('path');
 
-const BabiliPlugin = require("babili-webpack-plugin");
+//const BabiliPlugin = require("babili-webpack-plugin");
 
 module.exports = {
   devServer: {
     historyApiFallback: true,
   },
-  // performance:{
-  //   hints: 'warning',
-  //   maxEntrypointSize: 100000, //bytes
-  //   maxAssetSize: 450000,
-  // },
+  node: {
+    //console: false,
+    fs: 'empty',
+    net: 'empty',
+    tls: 'empty'
+  },
   context: path.join(__dirname),
   devtool: debug ? "inline-sourcemap" : null,
   entry: {
     app: "./src/js/root.js",
     vendor: ['react'],
   },
-  devtool: 'source-map',
+  //devtool: 'source-map',
   module: {
-    loaders: [
-      {
+    loaders: [{
         test: /\.js?$/,
         exclude: /(node_modules)/,
         loader: 'babel-loader',
@@ -32,7 +32,10 @@ module.exports = {
         }
       },
       //下面是使用 ant-design 的配置文件
-      { test: /\.css$/, loader: 'style-loader!css-loader' },
+      {
+        test: /\.css$/,
+        loader: 'style-loader!css-loader'
+      },
       {
         test: /\.less$/,
         loader: "style-loader!css-loader!less-loader"
@@ -46,7 +49,7 @@ module.exports = {
   plugins: [
     new webpack.optimize.CommonsChunkPlugin({
       name: 'vendor',
-    }),
-    new BabiliPlugin()
+    })
+    //new BabiliPlugin()
   ],
 };

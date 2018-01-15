@@ -48,7 +48,7 @@
 
 .tabs_news {
     padding-left: 10px;
-    width: 371px;
+    width: 440px;
     float: left;
 }
 
@@ -173,8 +173,8 @@
 
 .tabs_product {
     float: left;
-    padding-left: 10px;
-    width: 300px;
+    padding-left: 5px;
+    width: 230px;
 }
 
 .tabs_product .ant-tabs-content {
@@ -215,4 +215,21 @@
     vertical-align: middle;
     top: 0;
     text-align: left;
+}
+.btn {
+    display: inline-block;
+    background-color: #f44336;
+    color: #FFFFFF;
+    padding: 14px 25px;
+    text-align: center;
+    text-decoration: none;
+    font-size: 16px;
+    margin-left: 20px;
+    opacity: 0.9;
+}
+.description {
+    font-weight: 300;
+    font-size: 20px;
+    line-height: 1.5;
+    word-spacing: 0.3px;
 }

@@ -88,15 +88,15 @@ class PCHeader extends React.Component {
     {/* Define User info and login logout */}
     const userShow = this.state.hasLogined
       ? <Menu.Item key="logout" class="register">
-          <Button type="primary" htmltype="button">{this.state.userNickName}</Button>
+          <Button type="primary"> {this.state.userNickName}</Button>
           &nbsp;&nbsp;
 
           <Link target="_blank" to={`/usercenter`}>
-            <Button type="dashed" htmlType="button">Profile</Button>
+            <Button type="dashed" >Profile</Button>
           </Link>
 
           &nbsp;&nbsp;
-          <Button type="ghost" htmlType="button" onClick={this.logout.bind(this)}>Logout</Button>
+          <Button type="ghost" onClick={this.logout.bind(this)}>Logout</Button>
         </Menu.Item>
       : <Menu.Item key="register" class="register">
         <Icon type="appstore"/>Register/Login
