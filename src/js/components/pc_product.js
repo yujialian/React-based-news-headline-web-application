@@ -30,7 +30,7 @@ export default class PCProduct extends React.Component {
                 <a href="http://foxnews.com/">Fox News</a>
                 <a href="http://yahoo.com/news/">Yahoo News</a>
               </div>
-              <div className="productlinks-item item-sns">
+              <div className="productlinks-item item-sns" style={{"word-wrap":"break-word"}}>
                 <a
                   href="http://instagram.com/"
                   className="pr0">INSTAGRAM</a>

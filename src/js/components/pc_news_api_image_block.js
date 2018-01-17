@@ -21,7 +21,7 @@ export default class PCNewsImageBlock extends React.Component {
         this.setState({totalResults:json.totalResults});
     }
 );
-};
+  };
   render() {
     const styleImage = {
       display: "block",

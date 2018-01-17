@@ -32,7 +32,6 @@ export default class PCNewsDetails extends React.Component {
           this.setState({
             index: this.props.match.params.index
           });
-          console.log("this shit not work", this.state.newsItem[0]);
           document.title = this.state.newsItem[this.state.index].title + " - React News | React Driven News Platform";
         });
   };
@@ -40,7 +39,7 @@ export default class PCNewsDetails extends React.Component {
     const {
       newsItem
     } = this.state;
-    console.log(newsItem);
+    //console.log(newsItem);
     const {
       index
     } = this.state;
