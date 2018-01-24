@@ -121,6 +121,7 @@ import MediaQuery from 'react-responsive';
 
 Overall tech stack:  
 
+```
 UI Component ： Ant Design； flex layout  
 
 Develop environment： webpack、react、redux、es6、react-router  
@@ -130,7 +131,7 @@ Use Babel and babel-loader to compile jsx、es6
 Use webpack to optimising the application's bundle size,split vendor and application code into separate bundles to achieve better client caching.  
 
 Interact with back end with Fetch,Promise  
-
+```
 
 
 
