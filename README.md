@@ -60,8 +60,35 @@ Thrid step：
 webpack --watch
 Using Webpack's Hot Module Replacement with React： webpack-dev-server
 ```
+---------------Demo--------------------
 
----------------some notes--------------------
+### Main page:
+
+![React_news](https://s3.amazonaws.com/poly-screenshots.angel.co/Project/46/675944/02663dfc588078eb04a1653c5cd106b3-original.png)
+
+### Register:
+
+![React_news](https://s3.amazonaws.com/poly-screenshots.angel.co/Project/46/675944/48c4b98ad0a3bed6a6088c05e5ca3dc5-original.png)
+
+### Description:
+[1]
+![React_news](https://s3.amazonaws.com/poly-screenshots.angel.co/Project/46/675944/1247f393ac28c431f8a49d97feb64f5a-original.png)
+[2]
+![React_news](https://s3.amazonaws.com/poly-screenshots.angel.co/Project/46/675944/6165055a16b52b9a5e2be08edcb10bd8-original.png)
+
+### Mobile End:
+
+![React_news](https://s3.amazonaws.com/poly-screenshots.angel.co/Project/46/675944/f7466362109efbc1f43aa4ac70ddb374-original.png)
+
+### Mobile Detail:
+
+![React_news](https://s3.amazonaws.com/poly-screenshots.angel.co/Project/46/675944/329043b493d5f6350a8b7ffc06b81a7a-original.png)
+
+### Click for loading more content:
+
+![React_news](https://s3.amazonaws.com/poly-screenshots.angel.co/Project/46/675944/c85c3c737a18c5525bf5c6dd2014819b-original.png)
+
+---------------Notes--------------------
 
 ### PC end
 Icon source：
@@ -77,21 +104,18 @@ npm install fetch --save
 
 ```
 
-
-
-
 ### Mobile end （react-responseive）
 import MediaQuery from 'react-responsive';
 
 ```
-            <div>
-			    <MediaQuery query="(min-device-width:1224px)">
-					<PCIndex/>
-				</MediaQuery>
-				<MediaQuery query="(max-device-width:1224px)">
-					<MobileIndex/>
-				</MediaQuery>
-			</div>
+<div>
+	<MediaQuery query="(min-device-width:1224px)">
+		<PCIndex/>
+		</MediaQuery>
+		<MediaQuery query="(max-device-width:1224px)">
+		<MobileIndex/>
+	</MediaQuery>
+</div>
 ```
 
 
@@ -99,10 +123,15 @@ Overall tech stack:
 
 ```
 UI Component ： Ant Design； flex layout  
+
 Develop environment： webpack、react、redux、es6、react-router  
 
 Use Babel and babel-loader to compile jsx、es6  
-Use webpack to optimising the application's bundle size,split vendor and application code into separate bundles to achieve
-better client caching.  
-Interact with back end with Fetch,Promise
+
+Use webpack to optimising the application's bundle size,split vendor and application code into separate bundles to achieve better client caching.  
+
+Interact with back end with Fetch,Promise  
 ```
+
+
+
