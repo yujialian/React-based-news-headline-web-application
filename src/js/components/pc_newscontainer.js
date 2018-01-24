@@ -40,14 +40,16 @@ export default class PCNewsContainer extends React.Component {
       slidesToShow: 1,
       autoplay: true
     };
-    const {news} = this.state;
+    const {
+      news
+    } = this.state;
     var count = 0;
-    const imgList = Object.keys(news).length
-    ? news.map((newsItem, index) =>(
-      console.log(newsItem.url),
-      newsItem.urlToImage?
-      (<a className="front-image" href={newsItem.url}><img src={newsItem.urlToImage}/></a>):''
-    )):<div className="empty">'Loading...'</div>;
+    const imgList = Object.keys(news).length ?
+      news.map((newsItem, index) => (
+        console.log(newsItem.url),
+        newsItem.urlToImage ?
+        (<a className="front-image" href={newsItem.url}><img src={newsItem.urlToImage}/></a>) : ''
+      )) : <div className="empty">'Loading...'</div>;
     console.log(typeof(imgList));
     console.log(imgList);
 

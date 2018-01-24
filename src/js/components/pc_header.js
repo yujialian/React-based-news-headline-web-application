@@ -133,7 +133,7 @@ class PCHeader extends React.Component {
             {userShow}
           </Menu>
           {/* Register pop-box. */}
-          <Modal title="User Center" wrapClassName="vertical-center-modal" visible={this.state.modalVisible} onCancel={() => this.setModalVisible(false)} onOk={() => this.setModalVisible(false)} okText="Close">
+          <Modal title="User Center" wrapClassName="vertical-center-modal" visible={this.state.modalVisible} onCancel={() => this.setModalVisible(false)} onOk={() => this.setModalVisible(false)} okText="Close" cancelText="Cancel">
             <Tabs type="card" onChange={this.callback.bind(this)}>
               {/*Login tab*/}
               <TabPane tab="Login" key="1">
