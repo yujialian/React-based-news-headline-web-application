@@ -62,6 +62,10 @@ Using Webpack's Hot Module Replacement with React： webpack-dev-server
 ```
 ---------------Demo--------------------
 
+### Whole appcation demo:
+
+![React_news](https://github.com/yujialian/React_news/blob/master/src/images/react_news_demo1.gif)
+
 ### Main page:
 
 ![React_news](https://s3.amazonaws.com/poly-screenshots.angel.co/Project/46/675944/02663dfc588078eb04a1653c5cd106b3-original.png)
