@@ -62,9 +62,13 @@ Using Webpack's Hot Module Replacement with React： webpack-dev-server
 ```
 ---------------Demo--------------------
 
-### Whole appcation demo:
+### PC end demo:
 
 ![React_news](https://github.com/yujialian/React_news/blob/master/src/images/react_news_demo1.gif)
+
+### Mobile end demo:
+
+![React_news](https://github.com/yujialian/React_news/blob/master/src/images/react_news_mobile_demo.gif)
 
 ### Main page:
 
